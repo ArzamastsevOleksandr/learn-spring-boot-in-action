@@ -1,0 +1,42 @@
+server:
+  port: 8000
+spring:
+  main:
+    banner-mode: console
+    log-startup-info: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  thymeleaf:
+    cache: false
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:spring_boot_in_action;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+#    password: sa
+    driver-class-name: org.h2.Driver
+app:
+  prop_01: ${random.int}
+  prop_02: ${random.int(200)}
+  prop_03: ${random.int[50,55]}
+  prop_04: ${random.long(100000000)}
+  prop_05: ${random.long[50000000000,55555555555555]}
+  prop_06: ${random.value}
+  prop_07: ${random.uuid}
+
+amazon:
+  productUrl: http://www.amazon.com/gp/product/
+  associateId: i-need-more-money
+logging:
+  level:
+#    TAKES PRECEDENCE OVER logging-config.xml
+#    root: INFO
+    learn.spring.boot.in.action.SpringBootInActionApplication: TRACE
+  file:
+    name: logs.log
+#    this will give full control of the logging to the logging-config.xml
+#  config:
+#    classpath:logging-config.xml
