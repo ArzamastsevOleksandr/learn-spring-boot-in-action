@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Oops!</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<html>
+<div class="errorPage">
+    <span class="oops">Oops!</span><br/>
+    <img th:src="@{/images/MissingPage.png}"/>
+    <p>There seems to be a problem with the page you requested
+        (<span text="${path}">/readingList</span>).</p>
+    <p th:text="${'Path: ' + path}"></p>
+    <p th:text="${'Code: ' + status}"></p>
+    <p th:text="${'Details: ' + message}"></p>
+    <p th:text="${'Timestamp: ' + timestamp}"></p>
+    <p th:text="${'Error: ' + error}"></p>
+    <p th:text="${'Exception: ' + exception}"></p>
+    <p th:text="${'Errors from BindingResult: ' + errors}"></p>
+    <p th:text="${'Trace: ' + trace}"></p>
+</div>
+</html>
+
+</html>
