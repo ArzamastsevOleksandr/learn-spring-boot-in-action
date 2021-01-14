@@ -1,6 +1,6 @@
 package learn.spring.boot.in.action.controller;
 
-import learn.spring.boot.in.action.AmazonProperties;
+import learn.spring.boot.in.action.config.AmazonProperties;
 import learn.spring.boot.in.action.entity.BookEntity;
 import learn.spring.boot.in.action.repository.BookEntityRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package learn.spring.boot.in.action;
+package learn.spring.boot.in.action.config;
 
 import lombok.Getter;
 import lombok.Setter;
