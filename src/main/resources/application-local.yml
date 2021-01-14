@@ -6,3 +6,10 @@ app:
   prop_05: 5
   prop_06: 666
   prop_07: 0dbf6e30-9f2c-4737-8dd8-b9ff472d3ea5
+logging:
+  file:
+    name: logs.log.
+  config:
+    classpath:logging-config-local.xml
+#  gradle clean test bootJar
+# java -jar build/libs/learn-spring-boot-in-action-0.0.1-SNAPSHOT.jar --spring.profiles.active=local --server.port=8080
