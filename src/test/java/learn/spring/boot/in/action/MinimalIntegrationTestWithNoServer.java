@@ -18,15 +18,15 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-// MinimalIntegrationTest time taken:         367912781
-// IntegrationTestWithFullContext time taken: 2977723422
+// MinimalIntegrationTestWithNoServer      time taken: 367475291
+// IntegrationTestWithFullContextAndServer time taken: 3344633719
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {
         AmazonProperties.class,
         TestProfileBean.class
 })
-class MinimalIntegrationTest {
+class MinimalIntegrationTestWithNoServer {
 
     static long start;
 
@@ -52,7 +52,7 @@ class MinimalIntegrationTest {
 
     @AfterAll
     static void afterAll() {
-        System.err.println(MinimalIntegrationTest.class.getName() + " taken to execute (ns): " + (System.nanoTime() - start));
+        System.err.println(MinimalIntegrationTestWithNoServer.class.getName() + " taken to execute (ns): " + (System.nanoTime() - start));
     }
 
 }
