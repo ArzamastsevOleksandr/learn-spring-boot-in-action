@@ -10,12 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Slf4j
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/books")
 public class BookController {
 
     private final BookEntityRepository bookEntityRepository;
@@ -37,7 +39,7 @@ public class BookController {
     public String addToReadingList(@PathVariable("reader") String reader, BookEntity bookEntity) {
         bookEntity.setReader(reader);
         bookEntityRepository.save(bookEntity);
-        return "redirect:/{reader}";
+        return "redirect:/books/{reader}";
     }
 
 }

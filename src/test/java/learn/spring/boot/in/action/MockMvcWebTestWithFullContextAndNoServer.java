@@ -39,7 +39,7 @@ public class MockMvcWebTestWithFullContextAndNoServer {
 
     @Test
     void homePage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/a"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/books/a"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("readingList"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("books"))
@@ -50,14 +50,14 @@ public class MockMvcWebTestWithFullContextAndNoServer {
     void postBook() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/" + READER)
+                        .post("/books/" + READER)
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                         .param(TITLE, TITLE)
                         .param(AUTHOR, AUTHOR)
                         .param(ISBN, ISBN)
                         .param(DESCRIPTION, DESCRIPTION))
                 .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
-                .andExpect(MockMvcResultMatchers.header().string("Location", "/" + READER));
+                .andExpect(MockMvcResultMatchers.header().string("Location", "/books/" + READER));
 
         var bookEntity = new BookEntity();
         bookEntity.setId(1L);
@@ -67,7 +67,7 @@ public class MockMvcWebTestWithFullContextAndNoServer {
         bookEntity.setDescription(DESCRIPTION);
         bookEntity.setReader(READER);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/" + READER))
+        mockMvc.perform(MockMvcRequestBuilders.get("/books/" + READER))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("readingList"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("books"))

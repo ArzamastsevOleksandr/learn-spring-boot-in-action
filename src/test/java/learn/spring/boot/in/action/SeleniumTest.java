@@ -43,7 +43,7 @@ public class SeleniumTest {
 
     @Test
     void name() {
-        String url = "http://localhost:" + port + "/" + READER;
+        String url = "http://localhost:" + port + "/books/" + READER;
         browser.get(url);
         assertThat("You have no books in your book list").isEqualTo(browser.findElementByTagName("div").getText());
 
