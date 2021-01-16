@@ -52,6 +52,10 @@ management:
     web:
       exposure:
         include: '*'
+        exclude: health
+      base-path: /
+      path-mapping:
+        info: /myinfo
 info:
   actuator: enabled
   app: spring-boot-in-action

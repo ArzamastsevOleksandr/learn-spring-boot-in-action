@@ -1,5 +1,7 @@
 package learn.spring.boot.in.action.controller;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import learn.spring.boot.in.action.config.AmazonProperties;
 import learn.spring.boot.in.action.entity.BookEntity;
 import learn.spring.boot.in.action.repository.BookEntityRepository;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Slf4j
@@ -23,8 +26,19 @@ public class BookController {
     private final BookEntityRepository bookEntityRepository;
     private final AmazonProperties amazonProperties;
 
+    private final MeterRegistry meterRegistry;
+
+    private Counter getBooksByReaderCounter;
+
+    @PostConstruct
+    private void postConstruct() {
+        getBooksByReaderCounter = meterRegistry.counter("getBooksByReader");
+    }
+
     @GetMapping("/{reader}")
     public String booksByReader(@PathVariable("reader") String reader, Model model) {
+        getBooksByReaderCounter.increment();
+
         List<BookEntity> readingList = bookEntityRepository.findByReader(reader);
         if (readingList != null) {
             model.addAttribute("books", readingList);
