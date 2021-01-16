@@ -33,6 +33,7 @@ dependencies {
 //    testImplementation 'org.springframework.security:spring-security-test'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 }
 
 test {

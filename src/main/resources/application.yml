@@ -40,3 +40,19 @@ logging:
 #    this will give full control of the logging to the logging-config.xml
 #  config:
 #    classpath:logging-config.xml
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+info:
+  actuator: enabled
+  app: spring-boot-in-action
+  tag: learn
