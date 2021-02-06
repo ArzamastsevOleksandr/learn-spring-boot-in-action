@@ -52,7 +52,7 @@ management:
     web:
       exposure:
         include: '*'
-        exclude: health
+        exclude: env
       base-path: /
       path-mapping:
         info: /myinfo
